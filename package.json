@@ -22,6 +22,7 @@
   },
   "homepage": "https://github.com/kcheung12/DMIT2008-Assignment1#readme",
   "devDependencies": {
+    "@parcel/transformer-sass": "^2.0.0-rc.0",
     "http-server": "^13.0.2",
     "parcel": "^2.0.0-rc.0",
     "sass": "^1.42.1"
