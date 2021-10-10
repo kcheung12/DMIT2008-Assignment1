@@ -1,5 +1,8 @@
 .homePage-header{
     text-align: center;
     padding: 10rem 0;
-
+    display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+    gap: 1rem;
 }

@@ -2,4 +2,6 @@
 @use 'header';
 @use 'button';
 @use 'homePage-header';
+@use 'link';
+@use 'errorPage-Header';
 /*# sourceMappingURL=styles.css.map */
