@@ -76,8 +76,7 @@ abbr[data-original-title] {
   text-decoration: underline dotted;
   cursor: help;
   border-bottom: 0;
-  -webkit-text-decoration-skip-ink: none;
-          text-decoration-skip-ink: none;
+  text-decoration-skip-ink: none;
 }
 
 address {
@@ -413,13 +412,6 @@ table th {
   text-align: center;
 }
 
-.pageFooter {
-  text-align: center;
-}
-
-.addbutton {
-  text-align: center;
-}
 .addbutton svg {
   width: 5rem;
   height: 5rem;
@@ -428,16 +420,9 @@ table th {
 .homePage-header {
   text-align: center;
   padding: 10rem 0;
-  display: -webkit-box;
-  display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-flow: column wrap;
-          flex-flow: column wrap;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  flex-flow: column wrap;
+  align-items: center;
   gap: 1rem;
 }
 
@@ -469,4 +454,4 @@ p {
 body {
   text-align: center;
 }
-/*# sourceMappingURL=styles.css.map */
+/*# sourceMappingURL=index.f61c9795.css.map */

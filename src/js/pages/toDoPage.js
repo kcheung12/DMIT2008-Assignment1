@@ -1,7 +1,12 @@
-import logo from "../icon/logo";
-import header from "../components/header";
+// import logo from "../icon/logo";
+// import header from "../components/header";
 import link from "../components/link";
 import Router from "../routes/router";
+import addToDo from "../components/addToDo";
+import addlogo from "../icon/addlogo";
+
+
+import brandingHeader from "../components/brandingheader/brandingHeader"
 
 const onRequestNewPage = function(e){
     e.preventDefault();
@@ -9,17 +14,17 @@ const onRequestNewPage = function(e){
 }
 
 const toDoPage = function(params){
-
-    const pageHeader = document.createElement('header')
-    pageHeader.classList.add('homePage-header')
-    const logoElm = logo()
-    const h1 = header ('h1','Bingo is life')
-    const linkElm = link('404', '/pageNotFound')
+    const div = document.createElement('div')
+    div.classList.add('toDoPage')
+    const pageHeader = brandingHeader()
+    div.append(pageHeader)
+    const pageFooter = document.createElement('footer')
+    const linkElm = addToDo(addlogo,'/pageNotFound','addbutton')
     linkElm.addEventListener('click',onRequestNewPage)
-    pageHeader.append(logoElm)
-    pageHeader.append(h1)
-    pageHeader.append(linkElm)
-    return pageHeader
+
+    pageFooter.append(linkElm)
+    div.append(pageFooter)
+    return div
 }
 
 export default toDoPage

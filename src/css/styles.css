@@ -3,5 +3,10 @@
 @use 'button';
 @use 'homePage-header';
 @use 'link';
-@use 'errorPage-Header';
+@use 'errorPage';
+@use 'tagline';
+@use 'brandingHeader';
+body {
+  text-align: center;
+}
 /*# sourceMappingURL=styles.css.map */
