@@ -1,6 +1,6 @@
 import makeElement from "../../utils/makeElement"
 
-const header = function(elementType='h2', label='uiheader',className='ui-header'){
+const header = function(elementType='h2', label='ui header' ,className='ui-header'){
     const template =`<${elementType} class="${className}">${label}</h1>`
     const element = makeElement(template)
     return element

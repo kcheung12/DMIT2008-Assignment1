@@ -413,13 +413,6 @@ table th {
   text-align: center;
 }
 
-.pageFooter {
-  text-align: center;
-}
-
-.addbutton {
-  text-align: center;
-}
 .addbutton svg {
   width: 5rem;
   height: 5rem;
@@ -468,5 +461,13 @@ p {
 
 body {
   text-align: center;
+}
+
+h1 {
+  display: none;
+}
+
+header {
+  background-color: darkgoldenrod;
 }
 /*# sourceMappingURL=styles.css.map */

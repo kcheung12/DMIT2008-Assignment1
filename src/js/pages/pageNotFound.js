@@ -16,20 +16,22 @@ const pageNotFound = function(params){
     const pageHeader = document.createElement('header')
     pageHeader.classList.add('errorPage-header')
     const logoElm = logo()
-    const h1 = header ('h1','Bingo')
+    const h1 = header ('h1', 'Bingo')
     const p = tagline('Bingo is life')
     const linkElm = link('go back', '/')
     linkElm.addEventListener('click',onRequestNewPage)
     pageHeader.append(logoElm)
     pageHeader.append(h1) 
     pageHeader.append(p)
+    // let firstElem = pageHeader.firstElementChild
+    // firstElem.append(logoElm)
     const pageMain = document.createElement('main')
     pageMain.classList.add('errorContent')
     const errorElm = error()
     pageMain.append(errorElm)
     pageMain.append(linkElm)
-    page.appendChild(pageHeader)
-    page.appendChild(pageMain)
+    page.append(pageHeader)
+    page.append(pageMain)
     return page
 }
 

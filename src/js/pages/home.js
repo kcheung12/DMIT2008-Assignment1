@@ -14,7 +14,8 @@ const home = function(params){
     const pageHeader = document.createElement('header')
     pageHeader.classList.add('homePage-header')
     const logoElm = logo()
-    const h1 = header ('h1','Bingo')
+    const h1 = header ('h1', 'Bingo')
+    
     const p = tagline('Bingo is life')
     const linkElm = link('To Do App', '/toDoPage')
     linkElm.addEventListener('click',onRequestNewPage)
@@ -22,6 +23,10 @@ const home = function(params){
     pageHeader.append(h1)
     pageHeader.append(p)
     pageHeader.append(linkElm)
+
+    // let firstElem = pageHeader.firstElementChild
+    // firstElem.append(logoElm)
+    
     return pageHeader
 }
 

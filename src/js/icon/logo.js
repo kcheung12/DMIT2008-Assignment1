@@ -4,7 +4,7 @@ const logo = function () {
    const template = `
    
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="500px" viewBox="0 0 3456 864" enable-background="new 0 0 3456 864" xml:space="preserve">
+	  viewBox="0 0 3456 864" enable-background="new 0 0 3456 864" xml:space="preserve">
 <g>
 	<defs>
 		<circle id="SVGID_1_" cx="352.579" cy="362.126" r="316.579"/>

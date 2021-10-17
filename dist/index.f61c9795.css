@@ -454,4 +454,12 @@ p {
 body {
   text-align: center;
 }
+
+h1 {
+  display: none;
+}
+
+header {
+  background-color: darkgoldenrod;
+}
 /*# sourceMappingURL=index.f61c9795.css.map */

@@ -9,7 +9,6 @@
 // app.insertAdjacentHTML("beforeend",header('Bingo is life'))
 // app.insertAdjacentHTML("beforeend",button('to do app'))
 
-console.log('temp')
 
 import Router from "./routes/router"
 
