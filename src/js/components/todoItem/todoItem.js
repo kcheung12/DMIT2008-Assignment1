@@ -1,7 +1,7 @@
 const todoItem = function({id,category,title,endDate,isComplete}){
     const template = 
     `
-    <ul class="itemlist">
+    <ul class="list">
         <li class="category" data-key="${id}">${category}</li>
         <li class="title" data-key="${id}">${title}</li>
         <li class="date" data-key="${id}">${endDate}</li>

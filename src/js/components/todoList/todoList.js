@@ -19,11 +19,27 @@ const todoList = async function(){
 
     const data = await dataFetcher('https://raw.githubusercontent.com/kcheung12/DMIT2008-Assignment1/main/src/js/data/todos.json')
     data.forEach(cat => {
-        const div = document.createElement('div')
-        div.classList.add('itemList')
+        
+        const headDiv = document.createElement('div')
+        headDiv.classList.add('itemList')
+        const colorDiv = document.createElement('div')
+        colorDiv.classList.add('colorDiv')
+        function random_bg_color() {
+            var x = Math.floor(Math.random() * 256);
+            var y = Math.floor(Math.random() * 256);
+            var z = Math.floor(Math.random() * 256);
+            var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+            colorDiv.style.background = bgColor;
+            }
+        
+        random_bg_color();
+        headDiv.append(colorDiv)
+        content.append(headDiv)
+        const catDiv = document.createElement('div')
+        catDiv.classList.add('catDiv')
         const elem = render(todoItem,cat)
-        div.append(elem)
-        content.append(div)
+        catDiv.append(elem)
+        
 
         const functionDiv = document.createElement('div')
         functionDiv.classList.add('function-div')
@@ -33,7 +49,8 @@ const todoList = async function(){
         const del = link(trashlogo, '/pageNotFound','edit-button')
         del.addEventListener('click',onRequestNewPage)
         functionDiv.append(del)
-        content.append(functionDiv)
+        catDiv.append(functionDiv)
+        headDiv.append(catDiv)
     });
 
     

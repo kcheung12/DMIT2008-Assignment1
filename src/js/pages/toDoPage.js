@@ -1,47 +1,47 @@
-// import logo from "../icon/logo";
-// import header from "../components/header";
-// import link from "../components/link";
+import logo from "../icon/logo";
+import header from "../components/header";
+import tagline from "../components/tagline";
+import link from "../components/link";
 import Router from "../routes/router";
-import addToDo from "../components/addToDo";
 import addlogo from "../icon/addlogo";
 import todoList from "../components/todoList/todoList";
-// import dataFetcher from "../utils/dataFertcher";
 
-
-import brandingHeader from "../components/brandingheader/brandingHeader"
 
 const onRequestNewPage = function(e){
     e.preventDefault();
     Router(e.currentTarget.dataset.path)
 }
 
-const toDoPage = function(params){
+const toDoPage = function(){
     const div = document.createElement('div')
     div.classList.add('toDoPage')
-    const pageHeader = brandingHeader()
+    const pageHeader = document.createElement('header')
+    pageHeader.classList.add('toDoPage-header')
+    const logoElm = logo()
+    const h1 = header ('h1','Bingo')
+    const p = tagline('Time to play')
+    pageHeader.append(logoElm)
+    pageHeader.append(h1)
+    pageHeader.append(p)
     div.append(pageHeader)
+
 
     const main = document.createElement('main')
     div.append(main)
-    const getData = async function(){
-        const category = await todoList()   
-        main.append(category)
-    }
-    getData()
+    
+    const category = todoList() 
+    category.then(data=>main.append(data))  
+    
+    
     const pageFooter = document.createElement('footer')
-    const linkElm = addToDo(addlogo,'/pageNotFound','addbutton')
+    const footerDiv = document.createElement('div')
+    footerDiv.classList.add('footerDiv')
+    const linkElm = link(addlogo,'/pageNotFound','addbutton')
     linkElm.addEventListener('click',onRequestNewPage)
-
-    pageFooter.append(linkElm)
+    footerDiv.append(linkElm)
+    pageFooter.append(footerDiv)
     div.append(pageFooter)
     return div
 }
-
-// const appInit = async function (){
-//     const appData = await dataFetcher('https://raw.githubusercontent.com/kcheung12/DMIT2008-Assignment1/main/src/js/data/todos.json')
-//     console.log(appData)
-// }
-
-// appInit()
 
 export default toDoPage

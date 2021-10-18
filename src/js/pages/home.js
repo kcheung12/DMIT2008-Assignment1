@@ -9,7 +9,7 @@ const onRequestNewPage = function(e){
     Router(e.currentTarget.dataset.path)
 }
 
-const home = function(params){
+const home = function(){
 
     const pageHeader = document.createElement('header')
     pageHeader.classList.add('homePage-header')
@@ -23,9 +23,6 @@ const home = function(params){
     pageHeader.append(h1)
     pageHeader.append(p)
     pageHeader.append(linkElm)
-
-    // let firstElem = pageHeader.firstElementChild
-    // firstElem.append(logoElm)
     
     return pageHeader
 }

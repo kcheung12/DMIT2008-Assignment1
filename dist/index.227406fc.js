@@ -540,7 +540,7 @@ const onRequestNewPage = function(e) {
     e.preventDefault();
     _routerDefault.default(e.currentTarget.dataset.path);
 };
-const home = function(params) {
+const home = function() {
     const pageHeader = document.createElement('header');
     pageHeader.classList.add('homePage-header');
     const logoElm = _logoDefault.default();
@@ -552,8 +552,6 @@ const home = function(params) {
     pageHeader.append(h1);
     pageHeader.append(p);
     pageHeader.append(linkElm);
-    // let firstElem = pageHeader.firstElementChild
-    // firstElem.append(logoElm)
     return pageHeader;
 };
 exports.default = home;
@@ -635,20 +633,18 @@ const onRequestNewPage = function(e) {
     e.preventDefault();
     _routerDefault.default(e.currentTarget.dataset.path);
 };
-const pageNotFound = function(params) {
+const pageNotFound = function() {
     const page = document.createElement('div');
     const pageHeader = document.createElement('header');
     pageHeader.classList.add('errorPage-header');
     const logoElm = _logoDefault.default();
     const h1 = _headerDefault.default('h1', 'Bingo');
     const p = _taglineDefault.default('Bingo is life');
-    const linkElm = _linkDefault.default('go back', '/');
+    const linkElm = _linkDefault.default('go back', '/toDoPage');
     linkElm.addEventListener('click', onRequestNewPage);
     pageHeader.append(logoElm);
     pageHeader.append(h1);
     pageHeader.append(p);
-    // let firstElem = pageHeader.firstElementChild
-    // firstElem.append(logoElm)
     const pageMain = document.createElement('main');
     pageMain.classList.add('errorContent');
     const errorElm = _errorDefault.default();
@@ -675,55 +671,27 @@ exports.default = error;
 },{"../utils/makeElement":"ggL9Z","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"gyF4f":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-// import logo from "../icon/logo";
-// import header from "../components/header";
-// import link from "../components/link";
+var _logo = require("../icon/logo");
+var _logoDefault = parcelHelpers.interopDefault(_logo);
+var _header = require("../components/header");
+var _headerDefault = parcelHelpers.interopDefault(_header);
+var _tagline = require("../components/tagline");
+var _taglineDefault = parcelHelpers.interopDefault(_tagline);
+var _link = require("../components/link");
+var _linkDefault = parcelHelpers.interopDefault(_link);
 var _router = require("../routes/router");
 var _routerDefault = parcelHelpers.interopDefault(_router);
-var _addToDo = require("../components/addToDo");
-var _addToDoDefault = parcelHelpers.interopDefault(_addToDo);
 var _addlogo = require("../icon/addlogo");
 var _addlogoDefault = parcelHelpers.interopDefault(_addlogo);
 var _todoList = require("../components/todoList/todoList");
 var _todoListDefault = parcelHelpers.interopDefault(_todoList);
-// import dataFetcher from "../utils/dataFertcher";
-var _brandingHeader = require("../components/brandingheader/brandingHeader");
-var _brandingHeaderDefault = parcelHelpers.interopDefault(_brandingHeader);
 const onRequestNewPage = function(e) {
     e.preventDefault();
     _routerDefault.default(e.currentTarget.dataset.path);
 };
-const toDoPage = function(params) {
+const toDoPage = function() {
     const div = document.createElement('div');
     div.classList.add('toDoPage');
-    const pageHeader = _brandingHeaderDefault.default();
-    div.append(pageHeader);
-    const main = document.createElement('main');
-    div.append(main);
-    const getData = async function() {
-        const category = await _todoListDefault.default();
-        main.append(category);
-    };
-    getData();
-    const pageFooter = document.createElement('footer');
-    const linkElm = _addToDoDefault.default(_addlogoDefault.default, '/pageNotFound', 'addbutton');
-    linkElm.addEventListener('click', onRequestNewPage);
-    pageFooter.append(linkElm);
-    div.append(pageFooter);
-    return div;
-};
-exports.default = toDoPage;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","../routes/router":"3ISf2","../components/brandingheader/brandingHeader":"e2eQE","../components/addToDo":"kXVbE","../icon/addlogo":"6lHlM","../components/todoList/todoList":"d52V5"}],"e2eQE":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _logo = require("../../icon/logo");
-var _logoDefault = parcelHelpers.interopDefault(_logo);
-var _header = require("../header");
-var _headerDefault = parcelHelpers.interopDefault(_header);
-var _tagline = require("../tagline");
-var _taglineDefault = parcelHelpers.interopDefault(_tagline);
-const brandingHeader = function(params) {
     const pageHeader = document.createElement('header');
     pageHeader.classList.add('toDoPage-header');
     const logoElm = _logoDefault.default();
@@ -732,26 +700,28 @@ const brandingHeader = function(params) {
     pageHeader.append(logoElm);
     pageHeader.append(h1);
     pageHeader.append(p);
-    return pageHeader;
+    div.append(pageHeader);
+    const main = document.createElement('main');
+    div.append(main);
+    const category = _todoListDefault.default();
+    category.then((data)=>main.append(data)
+    );
+    const pageFooter = document.createElement('footer');
+    const footerDiv = document.createElement('div');
+    footerDiv.classList.add('footerDiv');
+    const linkElm = _linkDefault.default(_addlogoDefault.default, '/pageNotFound', 'addbutton');
+    linkElm.addEventListener('click', onRequestNewPage);
+    footerDiv.append(linkElm);
+    pageFooter.append(footerDiv);
+    div.append(pageFooter);
+    return div;
 };
-exports.default = brandingHeader;
+exports.default = toDoPage;
 
-},{"../../icon/logo":"cA0bR","../header":"fXKjJ","../tagline":"fNyw9","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"kXVbE":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","../routes/router":"3ISf2","../icon/addlogo":"6lHlM","../components/todoList/todoList":"d52V5","../components/link":"jlxOi","../icon/logo":"cA0bR","../components/header":"fXKjJ","../components/tagline":"fNyw9"}],"6lHlM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-var _makeElement = require("../../utils/makeElement");
-var _makeElementDefault = parcelHelpers.interopDefault(_makeElement);
-const addToDo = function(img, path = '/', className = 'link') {
-    const template = `<a href="${path}" data-path="${path}" class="${className}">${img}</a>`;
-    const element = _makeElementDefault.default(template);
-    return element;
-};
-exports.default = addToDo;
-
-},{"../../utils/makeElement":"ggL9Z","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"6lHlM":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const addlogo = `\n	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="red" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">\n	<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>\n  	</svg>\n   `;
+const addlogo = `\n	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="background-color:white" fill="red" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">\n	<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>\n  	</svg>\n   `;
 exports.default = addlogo;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"d52V5":[function(require,module,exports) {
@@ -780,11 +750,24 @@ const todoList = async function() {
     content.classList.add('category-list');
     const data = await _dataFertcherDefault.default('https://raw.githubusercontent.com/kcheung12/DMIT2008-Assignment1/main/src/js/data/todos.json');
     data.forEach((cat)=>{
-        const div = document.createElement('div');
-        div.classList.add('itemList');
+        const headDiv = document.createElement('div');
+        headDiv.classList.add('itemList');
+        const colorDiv = document.createElement('div');
+        colorDiv.classList.add('colorDiv');
+        function random_bg_color() {
+            var x = Math.floor(Math.random() * 256);
+            var y = Math.floor(Math.random() * 256);
+            var z = Math.floor(Math.random() * 256);
+            var bgColor = "rgb(" + x + "," + y + "," + z + ")";
+            colorDiv.style.background = bgColor;
+        }
+        random_bg_color();
+        headDiv.append(colorDiv);
+        content.append(headDiv);
+        const catDiv = document.createElement('div');
+        catDiv.classList.add('catDiv');
         const elem = _renderDefault.default(_todoItemDefault.default, cat);
-        div.append(elem);
-        content.append(div);
+        catDiv.append(elem);
         const functionDiv = document.createElement('div');
         functionDiv.classList.add('function-div');
         const edit = _linkDefault.default(_editlogoDefault.default, '/pageNotFound', 'edit-button');
@@ -793,7 +776,8 @@ const todoList = async function() {
         const del = _linkDefault.default(_trashlogoDefault.default, '/pageNotFound', 'edit-button');
         del.addEventListener('click', onRequestNewPage);
         functionDiv.append(del);
-        content.append(functionDiv);
+        catDiv.append(functionDiv);
+        headDiv.append(catDiv);
     });
     return content;
 };
@@ -813,7 +797,7 @@ exports.default = dataFetcher;
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const todoItem = function({ id , category , title , endDate , isComplete  }) {
-    const template = `\n    <ul class="itemlist">\n        <li class="category" data-key="${id}">${category}</li>\n        <li class="title" data-key="${id}">${title}</li>\n        <li class="date" data-key="${id}">${endDate}</li>\n        <li class="isComplete" data-key="${id}">${isComplete ? 'Completed' : '&nbsp;'}</li>\n    </ul>\n    `;
+    const template = `\n    <ul class="list">\n        <li class="category" data-key="${id}">${category}</li>\n        <li class="title" data-key="${id}">${title}</li>\n        <li class="date" data-key="${id}">${endDate}</li>\n        <li class="isComplete" data-key="${id}">${isComplete ? 'Completed' : '&nbsp;'}</li>\n    </ul>\n    `;
     return template;
 };
 exports.default = todoItem;
@@ -833,13 +817,13 @@ exports.default = render;
 },{"./makeElement":"ggL9Z","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"f6gis":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-const editlogo = `\n	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">\n  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>\n  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>\n</svg>\n   `;
+const editlogo = `\n	<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">\n  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>\n  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>\n</svg>\n   `;
 exports.default = editlogo;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"hJZK1":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
-const trashlogo = `\n	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">\n  	<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>\n  	<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 	1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>\n	</svg>\n   `;
+const trashlogo = `\n	<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">\n  	<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>\n  	<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 	1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>\n	</svg>\n   `;
 exports.default = trashlogo;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}]},["hkXzs","23obh"], "23obh", "parcelRequirea107")

@@ -11,20 +11,18 @@ const onRequestNewPage = function(e){
 }
 
 
-const pageNotFound = function(params){
+const pageNotFound = function(){
     const page = document.createElement('div')
     const pageHeader = document.createElement('header')
     pageHeader.classList.add('errorPage-header')
     const logoElm = logo()
     const h1 = header ('h1', 'Bingo')
     const p = tagline('Bingo is life')
-    const linkElm = link('go back', '/')
+    const linkElm = link('go back', '/toDoPage')
     linkElm.addEventListener('click',onRequestNewPage)
     pageHeader.append(logoElm)
     pageHeader.append(h1) 
     pageHeader.append(p)
-    // let firstElem = pageHeader.firstElementChild
-    // firstElem.append(logoElm)
     const pageMain = document.createElement('main')
     pageMain.classList.add('errorContent')
     const errorElm = error()
