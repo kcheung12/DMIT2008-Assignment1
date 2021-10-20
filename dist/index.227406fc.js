@@ -718,7 +718,7 @@ const toDoPage = function() {
 };
 exports.default = toDoPage;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","../routes/router":"3ISf2","../icon/addlogo":"6lHlM","../components/todoList/todoList":"d52V5","../components/link":"jlxOi","../icon/logo":"cA0bR","../components/header":"fXKjJ","../components/tagline":"fNyw9"}],"6lHlM":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","../routes/router":"3ISf2","../icon/addlogo":"6lHlM","../components/link":"jlxOi","../icon/logo":"cA0bR","../components/header":"fXKjJ","../components/tagline":"fNyw9","../components/todoList/todoList":"d52V5"}],"6lHlM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const addlogo = `\n	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="background-color:white" fill="red" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">\n	<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>\n  	</svg>\n   `;
@@ -783,7 +783,7 @@ const todoList = async function() {
 };
 exports.default = todoList;
 
-},{"../../utils/dataFertcher":"dii9d","../todoItem/todoItem":"dBe91","../../utils/render":"fEGOA","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","../link":"jlxOi","../../icon/editlogo":"f6gis","../../routes/router":"3ISf2","../../icon/trashlogo":"hJZK1"}],"dii9d":[function(require,module,exports) {
+},{"../../routes/router":"3ISf2","../../utils/dataFertcher":"dii9d","../todoItem/todoItem":"dBe91","../../utils/render":"fEGOA","../link":"jlxOi","../../icon/editlogo":"f6gis","../../icon/trashlogo":"hJZK1","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"dii9d":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const dataFetcher = async function(url = null) {
