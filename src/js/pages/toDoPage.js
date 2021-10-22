@@ -30,13 +30,13 @@ const toDoPage = function(){
     div.append(main)
     
     const category = todoList() 
-    category.then(data=>main.append(data))  
+    main.append(category)
     
     
     const pageFooter = document.createElement('footer')
     const footerDiv = document.createElement('div')
     footerDiv.classList.add('footerDiv')
-    const linkElm = link(addlogo,'/pageNotFound','addbutton')
+    const linkElm = link(addlogo,'/add','addbutton')
     linkElm.addEventListener('click',onRequestNewPage)
     footerDiv.append(linkElm)
     pageFooter.append(footerDiv)

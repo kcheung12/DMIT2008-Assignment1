@@ -1,16 +1,16 @@
 
-// import header from "./components/header";
-// import button from "./components/button";
-// import logo from "./icon/logo";
 
-// const app = document.querySelector('#app')
-// console.log(header())
-// app.insertAdjacentHTML("beforeend",logo())
-// app.insertAdjacentHTML("beforeend",header('Bingo is life'))
-// app.insertAdjacentHTML("beforeend",button('to do app'))
-
-
+import { createStore } from "./redux/store"
 import Router from "./routes/router"
+import dataFetcher from "./utils/dataFertcher"
 
 
-Router(window.location.pathname)
+
+
+const onAppInit = async function(e){
+    let data = await dataFetcher('https://raw.githubusercontent.com/kcheung12/DMIT2008-Assignment1/main/dist/data/todos.json')
+    createStore(data)
+    Router(window.location.pathname)
+}
+
+window.addEventListener('load', onAppInit)

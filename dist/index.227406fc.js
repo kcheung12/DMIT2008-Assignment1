@@ -456,19 +456,19 @@ function hmrAcceptRun(bundle, id) {
 
 },{}],"23obh":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-// import header from "./components/header";
-// import button from "./components/button";
-// import logo from "./icon/logo";
-// const app = document.querySelector('#app')
-// console.log(header())
-// app.insertAdjacentHTML("beforeend",logo())
-// app.insertAdjacentHTML("beforeend",header('Bingo is life'))
-// app.insertAdjacentHTML("beforeend",button('to do app'))
+var _store = require("./redux/store");
 var _router = require("./routes/router");
 var _routerDefault = parcelHelpers.interopDefault(_router);
-_routerDefault.default(window.location.pathname);
+var _dataFertcher = require("./utils/dataFertcher");
+var _dataFertcherDefault = parcelHelpers.interopDefault(_dataFertcher);
+const onAppInit = async function(e) {
+    let data = await _dataFertcherDefault.default('https://raw.githubusercontent.com/kcheung12/DMIT2008-Assignment1/main/dist/data/todos.json');
+    _store.createStore(data);
+    _routerDefault.default(window.location.pathname);
+};
+window.addEventListener('load', onAppInit);
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","./routes/router":"3ISf2"}],"JacNc":[function(require,module,exports) {
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","./routes/router":"3ISf2","./redux/store":"fKkA9","./utils/dataFertcher":"dii9d"}],"JacNc":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -510,16 +510,18 @@ var _pageNotFoundDefault = parcelHelpers.interopDefault(_pageNotFound);
 var _toDoPage = require("../pages/toDoPage");
 var _toDoPageDefault = parcelHelpers.interopDefault(_toDoPage);
 const routes = {
-    '/': _homeDefault.default(),
-    '/toDoPage': _toDoPageDefault.default(),
-    '/pageNotFound': _pageNotFoundDefault.default()
+    '/': _homeDefault.default,
+    '/toDoPage': _toDoPageDefault.default
 };
 const Router = function(pathname) {
+    const isValidRoute = Object.keys(routes).find((key)=>key === pathname
+    );
     const app = document.querySelector('#app');
     app.innerHTML = '';
     window.history.pushState({
     }, pathname, window.location.origin + pathname);
-    app.appendChild(routes[window.location.pathname]);
+    if (isValidRoute === undefined) app.appendChild(_pageNotFoundDefault.default());
+    else app.appendChild(routes[isValidRoute]());
 };
 exports.default = Router;
 
@@ -704,12 +706,11 @@ const toDoPage = function() {
     const main = document.createElement('main');
     div.append(main);
     const category = _todoListDefault.default();
-    category.then((data)=>main.append(data)
-    );
+    main.append(category);
     const pageFooter = document.createElement('footer');
     const footerDiv = document.createElement('div');
     footerDiv.classList.add('footerDiv');
-    const linkElm = _linkDefault.default(_addlogoDefault.default, '/pageNotFound', 'addbutton');
+    const linkElm = _linkDefault.default(_addlogoDefault.default, '/add', 'addbutton');
     linkElm.addEventListener('click', onRequestNewPage);
     footerDiv.append(linkElm);
     pageFooter.append(footerDiv);
@@ -729,8 +730,6 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _router = require("../../routes/router");
 var _routerDefault = parcelHelpers.interopDefault(_router);
-var _dataFertcher = require("../../utils/dataFertcher");
-var _dataFertcherDefault = parcelHelpers.interopDefault(_dataFertcher);
 var _todoItem = require("../todoItem/todoItem");
 var _todoItemDefault = parcelHelpers.interopDefault(_todoItem);
 var _render = require("../../utils/render");
@@ -741,14 +740,15 @@ var _editlogo = require("../../icon/editlogo");
 var _editlogoDefault = parcelHelpers.interopDefault(_editlogo);
 var _trashlogo = require("../../icon/trashlogo");
 var _trashlogoDefault = parcelHelpers.interopDefault(_trashlogo);
+var _store = require("../../redux/store");
 const onRequestNewPage = function(e) {
     e.preventDefault();
     _routerDefault.default(e.currentTarget.dataset.path);
 };
-const todoList = async function() {
+const todoList = function() {
     const content = document.createElement('div');
     content.classList.add('category-list');
-    const data = await _dataFertcherDefault.default('https://raw.githubusercontent.com/kcheung12/DMIT2008-Assignment1/main/src/js/data/todos.json');
+    const data = _store.getStore();
     data.forEach((cat)=>{
         const headDiv = document.createElement('div');
         headDiv.classList.add('itemList');
@@ -770,10 +770,10 @@ const todoList = async function() {
         catDiv.append(elem);
         const functionDiv = document.createElement('div');
         functionDiv.classList.add('function-div');
-        const edit = _linkDefault.default(_editlogoDefault.default, '/pageNotFound', 'edit-button');
+        const edit = _linkDefault.default(_editlogoDefault.default, '/edit', 'edit-button');
         edit.addEventListener('click', onRequestNewPage);
         functionDiv.append(edit);
-        const del = _linkDefault.default(_trashlogoDefault.default, '/pageNotFound', 'edit-button');
+        const del = _linkDefault.default(_trashlogoDefault.default, '/delete', 'delete-button');
         del.addEventListener('click', onRequestNewPage);
         functionDiv.append(del);
         catDiv.append(functionDiv);
@@ -783,17 +783,7 @@ const todoList = async function() {
 };
 exports.default = todoList;
 
-},{"../../routes/router":"3ISf2","../../utils/dataFertcher":"dii9d","../todoItem/todoItem":"dBe91","../../utils/render":"fEGOA","../link":"jlxOi","../../icon/editlogo":"f6gis","../../icon/trashlogo":"hJZK1","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"dii9d":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-const dataFetcher = async function(url = null) {
-    const res = await fetch(url);
-    const jsonData = await res.json();
-    return jsonData;
-};
-exports.default = dataFetcher;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"dBe91":[function(require,module,exports) {
+},{"../../routes/router":"3ISf2","../todoItem/todoItem":"dBe91","../../utils/render":"fEGOA","../link":"jlxOi","../../icon/editlogo":"f6gis","../../icon/trashlogo":"hJZK1","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","../../redux/store":"fKkA9"}],"dBe91":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const todoItem = function({ id , category , title , endDate , isComplete  }) {
@@ -825,6 +815,34 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const trashlogo = `\n	<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">\n  	<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>\n  	<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 	1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>\n	</svg>\n   `;
 exports.default = trashlogo;
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"fKkA9":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "createStore", ()=>createStore
+);
+parcelHelpers.export(exports, "getStore", ()=>getStore
+);
+let store = null;
+function createStore(data = []) {
+    if (store === null) store = [
+        ...data
+    ];
+    return null;
+}
+function getStore() {
+    return store;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"dii9d":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+const dataFetcher = async function(url = null) {
+    const res = await fetch(url);
+    const jsonData = await res.json();
+    return jsonData;
+};
+exports.default = dataFetcher;
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}]},["hkXzs","23obh"], "23obh", "parcelRequirea107")
 

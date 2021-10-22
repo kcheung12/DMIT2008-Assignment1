@@ -1,10 +1,10 @@
 import Router from "../../routes/router"
-import dataFetcher from "../../utils/dataFertcher";
 import todoItem from "../todoItem/todoItem";
 import render from "../../utils/render";
 import link from "../link";
 import editlogo from "../../icon/editlogo";
 import trashlogo from "../../icon/trashlogo";
+import { getStore } from "../../redux/store";
 
 
 const onRequestNewPage = function(e){
@@ -12,12 +12,14 @@ const onRequestNewPage = function(e){
     Router(e.currentTarget.dataset.path)
 }
 
-const todoList = async function(){
+const todoList = function(){
+    
+    
 
     const content = document.createElement('div')
     content.classList.add('category-list')
 
-    const data = await dataFetcher('https://raw.githubusercontent.com/kcheung12/DMIT2008-Assignment1/main/src/js/data/todos.json')
+    const data = getStore()
     data.forEach(cat => {
         
         const headDiv = document.createElement('div')
@@ -43,10 +45,10 @@ const todoList = async function(){
 
         const functionDiv = document.createElement('div')
         functionDiv.classList.add('function-div')
-        const edit = link(editlogo, '/pageNotFound','edit-button')
+        const edit = link(editlogo, '/edit','edit-button')
         edit.addEventListener('click',onRequestNewPage)
         functionDiv.append(edit)
-        const del = link(trashlogo, '/pageNotFound','edit-button')
+        const del = link(trashlogo, '/delete','delete-button')
         del.addEventListener('click',onRequestNewPage)
         functionDiv.append(del)
         catDiv.append(functionDiv)

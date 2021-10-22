@@ -1,8 +1,10 @@
+
 import logo from "../icon/logo";
 import header from "../components/header";
 import tagline from "../components/tagline";
 import link from "../components/link";
 import Router from "../routes/router";
+
 
 const onRequestNewPage = function(e){
     e.preventDefault();
@@ -10,7 +12,6 @@ const onRequestNewPage = function(e){
 }
 
 const home = function(){
-
     const pageHeader = document.createElement('header')
     pageHeader.classList.add('homePage-header')
     const logoElm = logo()
