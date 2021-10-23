@@ -32,7 +32,7 @@ const todoList = function(){
     })
     const edit = content.querySelector('.edit-button')
     edit.addEventListener('click',onRequestNewPage)
-    const del = content.querySelector('.edit-button')
+    const del = content.querySelector('.delete-button')
     del.addEventListener('click',onRequestNewPage)
     // data.forEach(cat => {
         
