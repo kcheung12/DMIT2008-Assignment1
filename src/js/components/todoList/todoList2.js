@@ -1,10 +1,13 @@
-
+import Router from "../../routes/router";
 import todoItem from "../todoItem/todoItem2";
 import editlogo from "../../icon/editlogo";
 import trashlogo from "../../icon/trashlogo";
 import { getStore } from "../../redux/store";
 
-
+const onRequestNewPage = function(e){
+    e.preventDefault();
+    Router(e.currentTarget.dataset.path)
+}
 const bgColor = function () {
 
     var x = Math.floor(Math.random() * 256);
@@ -23,13 +26,12 @@ const todoList = function(){
 
     const data = getStore()
     const elements = data.map(cat=>todoItem(bgColor(),editlogo,trashlogo, cat))
-    const edit = elements.querySelector('a.edit-button')
-    edit.addEventListener('click',onRequestNewPage)
-    const del = elements.querySelector('a.delete-button')
-    del.addEventListener('click',onRequestNewPage)
     elements.forEach(element => {
         content.append(element);
     })
+    const edit = main.querySelector('a')
+    edit.addEventListener('click',onRequestNewPage)
+    
     
     // data.forEach(cat => {
         
