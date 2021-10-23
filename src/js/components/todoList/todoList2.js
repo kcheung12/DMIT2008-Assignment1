@@ -27,7 +27,8 @@ const todoList = function(){
     const data = getStore()
     const elements = data.map(cat=>todoItem(bgColor(),editlogo,trashlogo, cat))
     elements.forEach(element => {
-        element.querySelector('a').addEventListener('click',onRequestNewPage)
+        element.querySelector('a.edit-button').addEventListener('click',onRequestNewPage);
+        element.querySelector('a.delete-button').addEventListener('click',onRequestNewPage);
         content.append(element);
     })
     
