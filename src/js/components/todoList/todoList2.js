@@ -29,7 +29,7 @@ const todoList = function(){
     elements.forEach(element => {
         content.append(element);
     })
-    const edit = content.querySelector('a')
+    const edit = content.querySelectorAll('a')
     edit.addEventListener('click',onRequestNewPage)
     
     
