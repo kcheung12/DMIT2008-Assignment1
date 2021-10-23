@@ -31,6 +31,10 @@ const toDoPage = function(){
     
     const category = todoList() 
     main.append(category)
+    const edit = main.querySelector('.edit-button')
+    edit.addEventListener('click',onRequestNewPage)
+    const del = main.querySelector('.delete-button')
+    del.addEventListener('click',onRequestNewPage)
     
     
     const pageFooter = document.createElement('footer')
