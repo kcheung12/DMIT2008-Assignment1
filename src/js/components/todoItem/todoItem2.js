@@ -13,8 +13,8 @@ const todoItem = function(color,edit,del,{id,category,title,endDate,isComplete})
                 <li class="isComplete" >${isComplete? 'Completed' : '&nbsp;'}</li>
             </ul>
             <div class="function-div">
-                <a href="/edit" data-path="/edit" class="edit-button">${edit}</a>
-                <a href="/delete" data-path="/delete" class="delete-button">${del}</a>
+                <button class="edit-button">${edit}</button>
+                <button class="delete-button">${del}</button>
             </div>       
         </div>
     </div>
