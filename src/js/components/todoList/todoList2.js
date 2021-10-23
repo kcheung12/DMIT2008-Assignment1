@@ -27,10 +27,10 @@ const todoList = function(){
     const data = getStore()
     const elements = data.map(cat=>todoItem(bgColor(),editlogo,trashlogo, cat))
     elements.forEach(element => {
+        element.querySelector('a').addEventListener('click',onRequestNewPage)
         content.append(element);
     })
-    const edit = content.querySelectorAll('a')
-    edit.addEventListener('click',onRequestNewPage)
+    
     
     
     // data.forEach(cat => {
