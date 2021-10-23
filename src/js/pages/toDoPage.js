@@ -31,9 +31,9 @@ const toDoPage = function(){
     
     const category = todoList() 
     main.append(category)
-    const edit = main.querySelector('a.edit-button')
+    const edit = main.querySelectorAll('a.edit-button')
     edit.addEventListener('click',onRequestNewPage)
-    const del = main.querySelector('a.delete-button')
+    const del = main.querySelectorAll('a.delete-button')
     del.addEventListener('click',onRequestNewPage)
     
     
