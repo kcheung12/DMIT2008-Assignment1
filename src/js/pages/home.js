@@ -19,7 +19,7 @@ const home = function(){
     
     const p = tagline('Bingo is life')
     const linkElm = link('To Do App', '/toDoPage')
-    // linkElm.addEventListener('click',onRequestNewPage)
+    linkElm.addEventListener('click',onRequestNewPage)
     pageHeader.append(logoElm)
     pageHeader.append(h1)
     pageHeader.append(p)

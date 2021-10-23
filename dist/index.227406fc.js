@@ -468,7 +468,25 @@ const onAppInit = async function(e) {
 };
 window.addEventListener('load', onAppInit);
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","./routes/router":"3ISf2","./redux/store":"fKkA9","./utils/dataFertcher":"dii9d"}],"JacNc":[function(require,module,exports) {
+},{"./redux/store":"fKkA9","./routes/router":"3ISf2","./utils/dataFertcher":"dii9d","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"fKkA9":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "createStore", ()=>createStore
+);
+parcelHelpers.export(exports, "getStore", ()=>getStore
+);
+let store = null;
+function createStore(data = []) {
+    if (store === null) store = [
+        ...data
+    ];
+    return null;
+}
+function getStore() {
+    return store;
+}
+
+},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"JacNc":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -558,7 +576,7 @@ const home = function() {
 };
 exports.default = home;
 
-},{"../icon/logo":"cA0bR","../components/header":"fXKjJ","../components/link":"jlxOi","../routes/router":"3ISf2","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","../components/tagline":"fNyw9"}],"cA0bR":[function(require,module,exports) {
+},{"../icon/logo":"cA0bR","../components/header":"fXKjJ","../components/tagline":"fNyw9","../components/link":"jlxOi","../routes/router":"3ISf2","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"cA0bR":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _makeElement = require("../utils/makeElement");
@@ -592,18 +610,6 @@ const header = function(elementType = 'h2', label = 'ui header', className = 'ui
 };
 exports.default = header;
 
-},{"../../utils/makeElement":"ggL9Z","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"jlxOi":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-var _makeElement = require("../../utils/makeElement");
-var _makeElementDefault = parcelHelpers.interopDefault(_makeElement);
-const link = function(label = 'ui link', path = '/', className = 'ui-link') {
-    const template = `<a href="${path}" data-path="${path}" class="${className}">${label}</a>`;
-    const element = _makeElementDefault.default(template);
-    return element;
-};
-exports.default = link;
-
 },{"../../utils/makeElement":"ggL9Z","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"fNyw9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
@@ -615,6 +621,18 @@ const tagline = function(message = '') {
     return element;
 };
 exports.default = tagline;
+
+},{"../../utils/makeElement":"ggL9Z","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"jlxOi":[function(require,module,exports) {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _makeElement = require("../../utils/makeElement");
+var _makeElementDefault = parcelHelpers.interopDefault(_makeElement);
+const link = function(label = 'ui link', path = '/', className = 'ui-link') {
+    const template = `<a href="${path}" data-path="${path}" class="${className}">${label}</a>`;
+    const element = _makeElementDefault.default(template);
+    return element;
+};
+exports.default = link;
 
 },{"../../utils/makeElement":"ggL9Z","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"3yXE9":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
@@ -658,7 +676,7 @@ const pageNotFound = function() {
 };
 exports.default = pageNotFound;
 
-},{"../icon/logo":"cA0bR","../components/header":"fXKjJ","../components/link":"jlxOi","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","../routes/router":"3ISf2","../icon/error":"32ZLx","../components/tagline":"fNyw9"}],"32ZLx":[function(require,module,exports) {
+},{"../icon/logo":"cA0bR","../components/header":"fXKjJ","../components/tagline":"fNyw9","../components/link":"jlxOi","../routes/router":"3ISf2","../icon/error":"32ZLx","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"32ZLx":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 var _makeElement = require("../utils/makeElement");
@@ -719,7 +737,7 @@ const toDoPage = function() {
 };
 exports.default = toDoPage;
 
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","../routes/router":"3ISf2","../icon/addlogo":"6lHlM","../components/link":"jlxOi","../icon/logo":"cA0bR","../components/header":"fXKjJ","../components/tagline":"fNyw9","../components/todoList/todoList2":"6QeiA"}],"6lHlM":[function(require,module,exports) {
+},{"../icon/logo":"cA0bR","../components/header":"fXKjJ","../components/tagline":"fNyw9","../components/link":"jlxOi","../routes/router":"3ISf2","../icon/addlogo":"6lHlM","../components/todoList/todoList2":"6QeiA","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"6lHlM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const addlogo = `\n	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="background-color:white" fill="red" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">\n	<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>\n  	</svg>\n   `;
@@ -809,24 +827,6 @@ var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const trashlogo = `\n	<svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">\n  	<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>\n  	<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 	1v1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>\n	</svg>\n   `;
 exports.default = trashlogo;
-
-},{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"fKkA9":[function(require,module,exports) {
-var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
-parcelHelpers.defineInteropFlag(exports);
-parcelHelpers.export(exports, "createStore", ()=>createStore
-);
-parcelHelpers.export(exports, "getStore", ()=>getStore
-);
-let store = null;
-function createStore(data = []) {
-    if (store === null) store = [
-        ...data
-    ];
-    return null;
-}
-function getStore() {
-    return store;
-}
 
 },{"@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"dii9d":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
