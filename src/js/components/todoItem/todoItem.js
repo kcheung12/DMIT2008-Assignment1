@@ -1,14 +1,17 @@
+import makeElement from "../../utils/makeElement"
+
 const todoItem = function({id,category,title,endDate,isComplete}){
     const template = 
     `
-    <ul class="list">
-        <li class="category" data-key="${id}">${category}</li>
-        <li class="title" data-key="${id}">${title}</li>
-        <li class="date" data-key="${id}">${endDate}</li>
-        <li class="isComplete" data-key="${id}">${isComplete? 'Completed' : '&nbsp;'}</li>
+    <ul class="list" data-key="${id}">
+        <li class="category" >${category}</li>
+        <li class="title" >${title}</li>
+        <li class="date" >${endDate}</li>
+        <li class="isComplete" >${isComplete? 'Completed' : '&nbsp;'}</li>
     </ul>
     `
-    return template
+
+    return makeElement(template)
 }
 
 export default todoItem

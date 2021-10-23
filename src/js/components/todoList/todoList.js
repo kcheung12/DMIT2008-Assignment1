@@ -39,7 +39,7 @@ const todoList = function(){
         content.append(headDiv)
         const catDiv = document.createElement('div')
         catDiv.classList.add('catDiv')
-        const elem = render(todoItem,cat)
+        const elem = todoItem(cat)
         catDiv.append(elem)
         
 

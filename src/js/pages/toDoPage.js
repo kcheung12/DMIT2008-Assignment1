@@ -4,7 +4,7 @@ import tagline from "../components/tagline";
 import link from "../components/link";
 import Router from "../routes/router";
 import addlogo from "../icon/addlogo";
-import todoList from "../components/todoList/todoList";
+import todoList from "../components/todoList/todoList2";
 
 
 const onRequestNewPage = function(e){
@@ -37,7 +37,7 @@ const toDoPage = function(){
     const footerDiv = document.createElement('div')
     footerDiv.classList.add('footerDiv')
     const linkElm = link(addlogo,'/add','addbutton')
-    linkElm.addEventListener('click',onRequestNewPage)
+    // linkElm.addEventListener('click',onRequestNewPage)
     footerDiv.append(linkElm)
     pageFooter.append(footerDiv)
     div.append(pageFooter)
