@@ -4,7 +4,7 @@ import tagline from "../components/tagline";
 import link from "../components/link";
 import Router from "../routes/router";
 import addlogo from "../icon/addlogo";
-import todoList from "../components/todoList/todoList";
+import todoList from "../components/todoList/todoList2";
 
 
 const onRequestNewPage = function(e){

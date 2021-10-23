@@ -567,7 +567,7 @@ const home = function() {
     const h1 = _headerDefault.default('h1', 'Bingo');
     const p = _taglineDefault.default('Bingo is life');
     const linkElm = _linkDefault.default('To Do App', '/toDoPage');
-    // linkElm.addEventListener('click',onRequestNewPage)
+    linkElm.addEventListener('click', onRequestNewPage);
     pageHeader.append(logoElm);
     pageHeader.append(h1);
     pageHeader.append(p);
@@ -737,7 +737,7 @@ const toDoPage = function() {
 };
 exports.default = toDoPage;
 
-},{"../icon/logo":"cA0bR","../components/header":"fXKjJ","../components/tagline":"fNyw9","../components/link":"jlxOi","../routes/router":"3ISf2","../icon/addlogo":"6lHlM","../components/todoList/todoList2":"6QeiA","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc"}],"6lHlM":[function(require,module,exports) {
+},{"../icon/logo":"cA0bR","../components/header":"fXKjJ","../components/tagline":"fNyw9","../components/link":"jlxOi","../routes/router":"3ISf2","../icon/addlogo":"6lHlM","@parcel/transformer-js/src/esmodule-helpers.js":"JacNc","../components/todoList/todoList2":"6QeiA"}],"6lHlM":[function(require,module,exports) {
 var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
 parcelHelpers.defineInteropFlag(exports);
 const addlogo = `\n	<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="background-color:white" fill="red" class="bi bi-plus-circle-fill" viewBox="0 0 16 16">\n	<path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3v-3z"/>\n  	</svg>\n   `;
