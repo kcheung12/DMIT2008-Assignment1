@@ -4,6 +4,10 @@ import editlogo from "../../icon/editlogo";
 import trashlogo from "../../icon/trashlogo";
 import { getStore } from "../../redux/store";
 
+const onRequestNewPage = function(e){
+    e.preventDefault();
+    Router(e.currentTarget.dataset.path)
+}
 
 const bgColor = function () {
 
@@ -26,6 +30,10 @@ const todoList = function(){
     elements.forEach(element => {
         content.append(element);
     })
+    const edit = content.querySelector('.edit-button')
+    edit.addEventListener('click',onRequestNewPage)
+    const del = content.querySelector('.edit-button')
+    del.addEventListener('click',onRequestNewPage)
     // data.forEach(cat => {
         
     //     const headDiv = document.createElement('div')
