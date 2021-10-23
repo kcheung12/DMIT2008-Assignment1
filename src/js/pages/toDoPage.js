@@ -37,7 +37,7 @@ const toDoPage = function(){
     const footerDiv = document.createElement('div')
     footerDiv.classList.add('footerDiv')
     const linkElm = link(addlogo,'/add','addbutton')
-    // linkElm.addEventListener('click',onRequestNewPage)
+    linkElm.addEventListener('click',onRequestNewPage)
     footerDiv.append(linkElm)
     pageFooter.append(footerDiv)
     div.append(pageFooter)
